@@ -20,7 +20,7 @@ const {
 } = require('discord.js');
 
 module.exports = {
-    data: new SlashCommandBuilder().setName('about').setDescription(`😋 A brief introduction about kythia`),
+    data: new SlashCommandBuilder().setName('about').setDescription(`😋 A brief introduction about me`),
     aliases: ['abt','🌸'],
     async execute(interaction, container) {
         const { t, kythiaConfig, helpers } = container;
