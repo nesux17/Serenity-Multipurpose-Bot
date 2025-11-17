@@ -10,16 +10,16 @@ const { SlashCommandBuilder, EmbedBuilder, PermissionFlagsBits } = require('disc
 
 module.exports = {
     data: new SlashCommandBuilder()
-        .setName('kyth')
-        .setDescription('🛠️ Manage All Kythia related config')
+        .setName('seren')
+        .setDescription('🛠️ Manage All Serenity related config')
         .addSubcommandGroup((group) =>
             group
                 .setName('team')
-                .setDescription('Manage Kythia Team members')
+                .setDescription('Manage Serenity Team members')
                 .addSubcommand((sub) =>
                     sub
                         .setName('add')
-                        .setDescription('Add a member to Kythia Team')
+                        .setDescription('Add a member to Serenity Team')
                         .addUserOption((option) => option.setName('user').setDescription('User to add to the team').setRequired(true))
                         .addStringOption((option) =>
                             option.setName('name').setDescription('Name/role of the team member').setRequired(false)
@@ -28,7 +28,7 @@ module.exports = {
                 .addSubcommand((sub) =>
                     sub
                         .setName('delete')
-                        .setDescription('Remove a member from Kythia Team')
+                        .setDescription('Remove a member from Serenity Team')
                         .addUserOption((option) => option.setName('user').setDescription('User to remove from the team').setRequired(true))
                 )
                 .addSubcommand((sub) => sub.setName('list').setDescription('Show all Kythia Team members'))
@@ -66,7 +66,7 @@ module.exports = {
             const existing = await KythiaTeam.getCache({ userId: user.id });
             if (existing) {
                 return interaction.editReply({
-                    content: `❌ **${user.tag}** is already in the Kythia Team!`,
+                    content: `❌ **${user.tag}** is already in the Serenity Team!`,
                     ephemeral: true,
                 });
             }
@@ -80,7 +80,7 @@ module.exports = {
             const embed = new EmbedBuilder()
                 .setTitle('✅ Team Member Added')
                 .setColor('Green')
-                .setDescription(`Successfully added **${user.tag}** to Kythia Team!`)
+                .setDescription(`Successfully added **${user.tag}** to Serenity Team!`)
                 .addFields(
                     { name: 'User ID', value: user.id, inline: true },
                     { name: 'Name/Role', value: name || 'Not specified', inline: true }
@@ -88,7 +88,7 @@ module.exports = {
                 .setTimestamp();
 
             await interaction.editReply({ embeds: [embed], ephemeral: true });
-            logger.info(`Added ${user.tag} (${user.id}) to Kythia Team by ${interaction.user.tag}`);
+            logger.info(`Added ${user.tag} (${user.id}) to Serenity Team by ${interaction.user.tag}`);
         } catch (error) {
             logger.error('Failed to add team member:', error);
             await interaction.editReply({
@@ -106,7 +106,7 @@ module.exports = {
             const existing = await KythiaTeam.getCache({ userId: user.id });
             if (!existing) {
                 return interaction.editReply({
-                    content: `❌ **${user.tag}** is not in the Kythia Team!`,
+                    content: `❌ **${user.tag}** is not in the Serenity Team!`,
                     ephemeral: true,
                 });
             }
@@ -117,12 +117,12 @@ module.exports = {
             const embed = new EmbedBuilder()
                 .setTitle('✅ Team Member Removed')
                 .setColor('Red')
-                .setDescription(`Successfully removed **${user.tag}** from Kythia Team!`)
+                .setDescription(`Successfully removed **${user.tag}** from Serenity Team!`)
                 .addFields({ name: 'User ID', value: user.id, inline: true })
                 .setTimestamp();
 
             await interaction.editReply({ embeds: [embed], ephemeral: true });
-            logger.info(`Removed ${user.tag} (${user.id}) from Kythia Team by ${interaction.user.tag}`);
+            logger.info(`Removed ${user.tag} (${user.id}) from Serenity Team by ${interaction.user.tag}`);
         } catch (error) {
             logger.error('Failed to remove team member:', error);
             await interaction.editReply({
@@ -138,13 +138,13 @@ module.exports = {
 
             if (teamMembers.length === 0) {
                 return interaction.editReply({
-                    content: '📋 The Kythia Team is currently empty.',
+                    content: '📋 The Serenity Team is currently empty.',
                     ephemeral: true,
                 });
             }
 
             const embed = new EmbedBuilder()
-                .setTitle('👥 Kythia Team Members')
+                .setTitle('👥 Serenity Team Members')
                 .setColor('Blurple')
                 .setDescription(`Total members: **${teamMembers.length}**`)
                 .setTimestamp();
@@ -181,7 +181,7 @@ module.exports = {
 
                 const embeds = chunks.map((chunk, index) => {
                     const chunkEmbed = new EmbedBuilder()
-                        .setTitle(index === 0 ? '👥 Kythia Team Members' : `👥 Kythia Team Members (continued ${index + 1})`)
+                        .setTitle(index === 0 ? '👥 Serenity Team Members' : `👥 Serenity Team Members (continued ${index + 1})`)
                         .setColor('Blurple')
                         .addFields(chunk);
                     if (index === 0) {
@@ -196,7 +196,7 @@ module.exports = {
                 await interaction.editReply({ embeds: [embed], ephemeral: true });
             }
 
-            logger.info(`Kythia Team list viewed by ${interaction.user.tag}`);
+            logger.info(`Serenity Team list viewed by ${interaction.user.tag}`);
         } catch (error) {
             logger.error('Failed to list team members:', error);
             await interaction.editReply({
