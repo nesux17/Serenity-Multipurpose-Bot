@@ -48,7 +48,7 @@ function loadKythiaConfig() {
          * ------------------------------------------------------------------- */
         bot: {
             // Bot name
-            name: 'Kythia',
+            name: 'Serenity',
             // Discord bot token (keep this secret!)
             token: process.env.DISCORD_BOT_TOKEN,
             // Discord application client ID
@@ -71,14 +71,14 @@ function loadKythiaConfig() {
             // Bot embed color (hex)
             color: '#FFFFFF',
             // Command prefixes, you can change it to your own prefixes
-            prefixes: ['!', 'k!'],
+            prefixes: [',', 'serenity'],
 
             // Bot status (e.g., 'online', 'idle', 'dnd')
-            status: 'online',
+            status: 'dnd',
             // Activity type (e.g., 'Playing', 'Watching', 'Listening', 'Custom')
-            activityType: 'Playing',
+            activityType: 'Listening',
             // Activity text shown in Discord
-            activity: 'Minecraft with kenndeclouv',
+            activity: 'to your fav playlist ♡',
 
             // Global cooldown in seconds
             globalCommandCooldown: 5,
